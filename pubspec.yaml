@@ -39,6 +39,7 @@ dependencies:
   google_fonts: ^4.0.3
   flutter_signin_button: ^2.0.0
   footer: ^0.0.4
+  flutter_fab_dialer: ^0.1.1
 
 dev_dependencies:
   flutter_test:

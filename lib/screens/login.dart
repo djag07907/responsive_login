@@ -1,11 +1,3 @@
-/**
- * @author Daniel Alvarez
- * @email josamogax@gmail.com
- * @create date 2023-02-23 00:45:06
- * @modify date 2023-02-23 00:45:06
- * @desc [description]
- */
-
 import 'package:flutter/material.dart';
 import 'package:responsive_login/screens/login_mobile.dart';
 import 'package:responsive_login/screens/login_tablet.dart';
@@ -26,6 +18,10 @@ class LoginScreen extends StatelessWidget {
             return const LoginWebDesktop();
           }
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.info),
       ),
     );
   }

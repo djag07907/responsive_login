@@ -2,18 +2,15 @@
  * @author Daniel Alvarez
  * @email josamogax@gmail.com
  * @create date 2023-02-23 00:56:59
- * @modify date 2023-02-23 00:56:59
+ * @modify date 2023-02-23 02:44:23
  * @desc [description]
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:footer/footer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginWebDesktop extends StatefulWidget {
   const LoginWebDesktop({super.key});
@@ -44,6 +41,8 @@ class _LoginWebDesktopState extends State<LoginWebDesktop> {
   //...
   bool _isChecked = false;
   final _formKey = GlobalKey<FormState>();
+  final hardcodeEmail = 'test_email@djagdev.com';
+  final hardcodePassword = 'myP4ssw0rd2023';
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +103,9 @@ class _LoginWebDesktopState extends State<LoginWebDesktop> {
                               emailText.endsWith('.com')) {
                             return null;
                           }
+                          if (emailText != hardcodeEmail) {
+                            return 'Wrong credentials, try again.';
+                          }
                           return null;
                         },
                       ),
@@ -119,6 +121,9 @@ class _LoginWebDesktopState extends State<LoginWebDesktop> {
                         validator: (passwordText) {
                           if (passwordText == null || passwordText.isEmpty) {
                             return 'Password cannot be empty.';
+                          }
+                          if (passwordText != hardcodePassword) {
+                            return 'Wrong credentials, try again.';
                           }
                           return null;
                         },

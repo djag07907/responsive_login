@@ -7,73 +7,25 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:responsive_login/screens/login_mobile.dart';
+import 'package:responsive_login/screens/login_tablet.dart';
+import 'package:responsive_login/screens/login_webdesktop.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false, // this helps when a keyboard is open
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  "Login",
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                const SizedBox(
-                  height: 15.0,
-                ),
-                Text(
-                  "Welcome back to AppName!",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              ],
-            ),
-          ),
-          Center(
-            child: Card(
-              elevation: 4.0,
-              child: Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: "Username",
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 8.0,
-                    ),
-                    TextFormField(
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        labelText: "Password",
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // logic for logging in
-                      },
-                      child: const Text("Login"),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth < 600) {
+            return const LoginMobile();
+          } else if (constraints.maxWidth > 600 && constraints.maxWidth < 900) {
+            return const LoginTablet();
+          } else {
+            return const LoginWebDesktop();
+          }
+        },
       ),
     );
   }
